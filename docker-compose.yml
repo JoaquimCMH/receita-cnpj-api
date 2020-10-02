@@ -1,0 +1,18 @@
+version: '3.5'
+
+services:
+
+  receita-cnpj-api:
+    build: ./
+    volumes:
+      - <local do arquivo bd_dados_qsa_cnpj.db>:/data
+     #- /mnt/dados-receita:/data <--exemplo
+    ports:
+      - "3001:3000"
+    networks:
+      - my-proxy-net
+
+networks:
+  my-proxy-net:
+    external:
+      name: receita_cnpj_api_network
